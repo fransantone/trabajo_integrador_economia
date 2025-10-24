@@ -1,6 +1,3 @@
-"""
-Modelo: Maneja los datos y cálculos de regresión
-"""
 import numpy as np
 from scipy import stats
 from typing import Tuple, Optional
