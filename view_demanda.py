@@ -18,11 +18,11 @@ class MainWindow(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Análisis Demanda")
+        self.setWindowTitle("Graficanda")
         self.setFixedSize(1000, 600)
         self._center_window()
         self.icon = QIcon()
-        self.icon.addFile(u"C:/Users/Santo/OneDrive/Documentos/UB/tercero/economia_finanzas/trabajo_final_integrador/assets/icono.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.icon.addFile(u"C:/Users/Santo/OneDrive/Documentos/UB/tercero/economia_finanzas/trabajo_final_integrador/assets/economy.ico", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.setWindowIcon(self.icon)
         
         self.colors = {
