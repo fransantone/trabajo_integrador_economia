@@ -1,11 +1,15 @@
-from PySide6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QSplitter, QFrame, QLineEdit, QComboBox, QRadioButton, QButtonGroup)
-from PySide6.QtCore import Qt, Signal
-from PySide6.QtGui import QFont
+from PySide6.QtWidgets import (
+    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
+    QPushButton, QLabel, QSplitter, QFrame, QLineEdit, QComboBox, QRadioButton, QButtonGroup
+)
+from PySide6.QtCore import Qt, Signal, QSize
+from PySide6.QtGui import QFont, QIcon, QPixmap, QPainter, QColor
 import numpy as np
+import os
 
 
 class MainWindow(QMainWindow):
-    """Ventana principal de la aplicación"""
+    """Ventana principal de la aplicación""" 
     # Señales para comunicación con el controlador
     load_api_data = Signal(str)
     apply_manual_data = Signal(str, str)
@@ -14,10 +18,12 @@ class MainWindow(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Análisis de Función de Demanda")
-        
+        self.setWindowTitle("Análisis Demanda")
         self.setFixedSize(1000, 600)
         self._center_window()
+        self.icon = QIcon()
+        self.icon.addFile(u"C:/Users/Santo/OneDrive/Documentos/UB/tercero/economia_finanzas/trabajo_final_integrador/assets/icono.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.setWindowIcon(self.icon)
         
         self.colors = {
             'primary': '#5B2C6F',
@@ -110,7 +116,7 @@ class MainWindow(QMainWindow):
         self.prices_input.setMinimumHeight(34)
         manual_layout.addWidget(self.prices_input)
         
-        quantities_label = QLabel("Cantidades:")
+        quantities_label = QLabel("Cantidades demanda:")
         quantities_label.setFont(QFont("Arial", 10, QFont.Bold))
         quantities_label.setStyleSheet(f"color: {self.colors['white']}; padding: 2px 0px; margin-top: 4px;")
         manual_layout.addWidget(quantities_label)
@@ -166,7 +172,7 @@ class MainWindow(QMainWindow):
         panel = QFrame()
         panel.setFrameShape(QFrame.StyledPanel)
         layout = QVBoxLayout(panel)
-        layout.setContentsMargins(15, 15, 15, 15)
+        layout.setContentsMargins(20, 20, 20, 20)
         
         title = QLabel("Visualización de Gráfico")
         title.setFont(QFont("Arial", 20, QFont.Bold))
